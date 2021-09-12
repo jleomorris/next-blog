@@ -1,0 +1,21 @@
+.success {
+  background: rgb(99, 211, 99);
+  margin: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+}
+
+.success:hover {
+  filter: brightness(0.8);
+}
+
+.error {
+  background: rgb(219, 64, 64);
+  padding: 0.5rem 1rem;
+  margin: 0.5rem;
+  border-radius: 10px;
+}
+
+.error:hover {
+  filter: brightness(0.8);
+}

@@ -3,6 +3,7 @@ import Image from 'next/image';
 import homeStyles from '../styles/Home.module.css';
 import Link from 'next/link';
 import profilePic from '../public/images/profile.jpg';
+import Alert from '../components/alert';
 
 export default function Home() {
   return (
@@ -30,7 +31,7 @@ export default function Home() {
         <h2 className='text-2xl'>
           React Developer at IronmongeryDirect, Essex
         </h2>
-        <div className='mt-10 text-left'>
+        <div className='my-10 text-left'>
           <p className='text-2xl font-bold'>Blogs</p>
           <p className='text-2xl font-thin'>
             Read the{' '}
@@ -39,6 +40,8 @@ export default function Home() {
             </a>
           </p>
         </div>
+        <Alert type='success' />
+        <Alert type='error' />
       </main>
     </div>
   );
