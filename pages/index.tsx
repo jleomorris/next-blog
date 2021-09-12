@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import homeStyles from '../styles/Home.module.css';
+import Link from 'next/link';
 
 export default function Home() {
   return (
@@ -13,10 +14,10 @@ export default function Home() {
 
       <main className='text-center p-24'>
         <h1 className='text-8xl font-bold'>
-          <a href='https://nextjs.org' className='text-purple-500'>
-            Next, TypeScript, Tailwind, Redux Toolkit
-          </a>{' '}
-          template
+          Read the{' '}
+          <a href='/posts/first-post' className='text-purple-500'>
+            first blog
+          </a>
         </h1>
         <ul className='my-10 space-y-5'>
           <li className='text-3xl'>
@@ -31,8 +32,6 @@ export default function Home() {
             <code className={homeStyles.code}>features/...</code>
           </li>
         </ul>
-        {/* <p className='my-10'>
-        </p> */}
       </main>
     </div>
   );

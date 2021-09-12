@@ -1,8 +1,15 @@
+import Link from 'next/link';
+
 const firstPost = (): JSX.Element => {
   return (
-    <div>
-      <h1>First post</h1>
-    </div>
+    <>
+      <h1>First Post</h1>
+      <h2>
+        <Link href='/'>
+          <a>Back to home</a>
+        </Link>
+      </h2>
+    </>
   );
 };
 
