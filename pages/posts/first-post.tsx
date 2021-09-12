@@ -1,8 +1,12 @@
 import Link from 'next/link';
+import Head from 'next/head';
 
 const firstPost = (): JSX.Element => {
   return (
     <>
+      <Head>
+        <title>First Post</title>
+      </Head>
       <h1>First Post</h1>
       <h2>
         <Link href='/'>
