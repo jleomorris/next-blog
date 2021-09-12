@@ -2,6 +2,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import homeStyles from '../styles/Home.module.css';
 import Link from 'next/link';
+import profilePic from '../public/images/profile.jpg';
 
 export default function Home() {
   return (
@@ -13,25 +14,31 @@ export default function Home() {
       </Head>
 
       <main className='text-center p-24'>
-        <h1 className='text-8xl font-bold'>
-          Read the{' '}
-          <a href='/posts/first-post' className='text-purple-500'>
-            first blog
-          </a>
-        </h1>
-        <ul className='my-10 space-y-5'>
-          <li className='text-3xl'>
-            Update homepage at{' '}
-            <code className={homeStyles.code}>pages/index.js</code>
-          </li>
-          <li className='text-3xl'>
-            Add pages to <code className={homeStyles.code}>pages/...</code>
-          </li>
-          <li className='text-3xl'>
-            Add redux slices to{' '}
-            <code className={homeStyles.code}>features/...</code>
-          </li>
-        </ul>
+        <div className='flex flex-col justify-center items-center'>
+          <Image
+            src={profilePic}
+            alt='profile pic'
+            className='rounded-full'
+            height={200}
+            width={200}
+          />
+          <Link href='https://github.com/jleomorris'>
+            <a className='mt-2'>@www.github.com/jleomorris</a>
+          </Link>
+        </div>
+        <h1 className='mt-6 text-4xl font-extrabold'>James Morris</h1>
+        <h2 className='text-2xl'>
+          React Developer at IronmongeryDirect, Essex
+        </h2>
+        <div className='mt-10 text-left'>
+          <p className='text-2xl font-bold'>Blogs</p>
+          <p className='text-2xl font-thin'>
+            Read the{' '}
+            <a href='/posts/first-post' className='text-purple-500'>
+              first blog
+            </a>
+          </p>
+        </div>
       </main>
     </div>
   );
