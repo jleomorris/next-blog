@@ -40,8 +40,6 @@ export default function Home() {
             </a>
           </p>
         </div>
-        <Alert type='success' />
-        <Alert type='error' />
       </main>
     </div>
   );
