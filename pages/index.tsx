@@ -4,8 +4,29 @@ import homeStyles from '../styles/Home.module.css';
 import Link from 'next/link';
 import profilePic from '../public/images/profile.jpg';
 import Alert from '../components/alert';
+// Lib
+import { getSortedPostsData } from '../lib/posts';
 
-export default function Home() {
+export async function getStaticProps() {
+  const allPostsData = getSortedPostsData();
+  return {
+    props: {
+      allPostsData,
+    },
+  };
+}
+
+export interface IProps {
+  allPostsData: {
+    id: string;
+    title: string;
+    date: string;
+  }[];
+}
+
+const Home: React.FC<IProps> = ({ allPostsData }) => {
+  // console.log('homepage.allPostsData', allPostsData);
+
   return (
     <div className='w-screen h-screen flex justify-center items-center'>
       <Head>
@@ -32,15 +53,30 @@ export default function Home() {
           React Developer at IronmongeryDirect, Essex
         </h2>
         <div className='my-10 text-left'>
-          <p className='text-2xl font-bold'>Blogs</p>
           <p className='text-2xl font-thin'>
             Read the{' '}
-            <a href='/posts/first-post' className='text-purple-500'>
-              first blog
-            </a>
+            <Link href='/posts/first-post'>
+              <a className='text-purple-500'>first blog</a>
+            </Link>
           </p>
         </div>
+        <section className='text-left'>
+          <h2 className='text-2xl font-bold'>Blog</h2>
+          <ul className=''>
+            {allPostsData.map(({ id, date, title }) => (
+              <li className='my-5' key={id}>
+                {title}
+                <br />
+                {id}
+                <br />
+                {date}
+              </li>
+            ))}
+          </ul>
+        </section>
       </main>
     </div>
   );
-}
+};
+
+export default Home;
