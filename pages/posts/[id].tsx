@@ -3,16 +3,34 @@ import Link from 'next/link';
 // import Layout from '../../components/layout';
 import { getAllPostIds, getPostData } from '../../lib/posts';
 import Date from '../../components/date';
+import { GetStaticPaths, GetStaticProps } from 'next';
 
-export async function getStaticProps({ params }) {
+interface IProps {
+  postData: {
+    id: string;
+    contentHtml: string;
+    title: string;
+    date: string;
+  };
+}
+
+type Params = {
+  params: {
+    id: string;
+  };
+};
+
+export const getStaticProps = async ({ params }: Params) => {
   const postData = await getPostData(params.id);
+
+  console.log('[id].params', params);
 
   return {
     props: {
       postData,
     },
   };
-}
+};
 
 export async function getStaticPaths() {
   const paths = getAllPostIds();
@@ -23,7 +41,7 @@ export async function getStaticPaths() {
   };
 }
 
-const Post: React.FC = ({ postData }) => {
+const Post: React.FC<IProps> = ({ postData }) => {
   return (
     <>
       <Head>
