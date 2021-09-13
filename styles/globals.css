@@ -10,6 +10,19 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
+ul {
+  margin: 1rem;
+  padding: 1rem 1.5rem;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+li {
+  list-style: disc !important;
+}
+
 a {
   color: inherit;
   text-decoration: none;
