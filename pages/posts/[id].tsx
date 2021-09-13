@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Link from 'next/link';
 import Layout from '../../components/layout';
 import { getAllPostIds, getPostData } from '../../lib/posts';
 import Date from '../../components/date';
@@ -38,6 +39,9 @@ const Post: React.FC = ({ postData }) => {
           dangerouslySetInnerHTML={{ __html: postData.contentHtml }}
         />
       </article>
+      <Link href={`/`}>
+        <a className='text-blue-300 font-thin'>&#8592; Return to home</a>
+      </Link>
     </Layout>
   );
 };

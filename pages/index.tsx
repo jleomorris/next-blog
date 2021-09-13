@@ -2,6 +2,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import homeStyles from '../styles/Home.module.css';
 import Link from 'next/link';
+import Date from '../components/date';
 import profilePic from '../public/images/profile.jpg';
 import nextJsLogo from '../public/images/nextJs.svg';
 import Alert from '../components/alert';
@@ -71,12 +72,16 @@ const Home: React.FC<IProps> = ({ allPostsData }) => {
           <ul className='flex flex-wrap justify-start w-full'>
             {allPostsData.map(({ id, date, title }) => (
               <li
-                className='bg-white m-2 shadow-md p-5 rounded-xl w-full lg:w-1/4'
+                className='bg-white m-2 shadow-md p-5 rounded-xl w-full lg:w-1/4 hover:bg-gray-200'
                 key={id}
               >
-                <p className='text-blue-300 font-bold text-2xl'>{title}</p>
-                <p>{id}</p>
-                <p className=''>{date}</p>
+                <Link href={`/posts/${id}`}>
+                  <a className='text-blue-600 font-bold text-2xl'>{title}</a>
+                </Link>
+                <br />
+                <small>
+                  <Date dateString={date} />
+                </small>
               </li>
             ))}
           </ul>
