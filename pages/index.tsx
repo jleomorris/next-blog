@@ -8,15 +8,8 @@ import nextJsLogo from '../public/images/nextJs.svg';
 import Alert from '../components/alert';
 // Lib
 import { getSortedPostsData } from '../lib/posts';
-
-export async function getStaticProps() {
-  const allPostsData = getSortedPostsData();
-  return {
-    props: {
-      allPostsData,
-    },
-  };
-}
+import { ReactElement } from 'react';
+import { GetStaticProps } from 'next';
 
 export interface IProps {
   allPostsData: {
@@ -26,7 +19,7 @@ export interface IProps {
   }[];
 }
 
-const Home: React.FC<IProps> = ({ allPostsData }) => {
+const Home: React.FC<IProps> = ({ allPostsData }): ReactElement => {
   // console.log('homepage.allPostsData', allPostsData);
 
   return (
@@ -57,6 +50,15 @@ const Home: React.FC<IProps> = ({ allPostsData }) => {
       </ul>
     </>
   );
+};
+
+export const getStaticProps: GetStaticProps = async () => {
+  const allPostsData = getSortedPostsData();
+  return {
+    props: {
+      allPostsData,
+    },
+  };
 };
 
 export default Home;

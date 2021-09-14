@@ -7,39 +7,17 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 
 interface IProps {
   postData: {
-    id: string;
     contentHtml: string;
     title: string;
     date: string;
   };
 }
 
-type Params = {
-  params: {
-    id: string;
-  };
-};
-
-export const getStaticProps = async ({ params }: Params) => {
-  const postData = await getPostData(params.id);
-
-  console.log('[id].params', params);
-
-  return {
-    props: {
-      postData,
-    },
-  };
-};
-
-export async function getStaticPaths() {
-  const paths = getAllPostIds();
-
-  return {
-    paths,
-    fallback: false,
-  };
-}
+// type Params = {
+//   params: {
+//     id: string;
+//   };
+// };
 
 const Post: React.FC<IProps> = ({ postData }) => {
   return (
@@ -62,6 +40,26 @@ const Post: React.FC<IProps> = ({ postData }) => {
       </Link>
     </>
   );
+};
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const postData = await getPostData(params!.id as string);
+
+  console.log('[id].params', params);
+
+  return {
+    props: {
+      postData,
+    },
+  };
+};
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const paths = getAllPostIds();
+  return {
+    paths,
+    fallback: false,
+  };
 };
 
 export default Post;
